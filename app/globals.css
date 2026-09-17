@@ -1,0 +1,64 @@
+:root {
+  color-scheme: light;
+  color: #183d36;
+  background: #f6f4ed;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; }
+a:focus-visible, [tabindex="-1"]:focus-visible {
+  outline: 3px solid #a24724;
+  outline-offset: 6px;
+}
+
+.skip-link { position: absolute; top: -5rem; left: 1rem; padding: 1rem; background: white; z-index: 1; }
+.skip-link:focus { top: 1rem; }
+.site-header, main, .site-footer { width: min(1120px, calc(100% - 64px)); margin-inline: auto; }
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 28px; border-bottom: 1px solid #d7dcd2; }
+.wordmark { display: inline-flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 700; text-decoration: none; }
+.brand-mark { display: grid; place-items: center; width: 40px; height: 40px; background: #183d36; color: #f6f4ed; border-radius: 50%; font-family: Georgia, serif; font-size: 23px; }
+.pilot-label { padding: 7px 12px; border: 1px solid #bccbbd; border-radius: 30px; font-size: 12px; white-space: nowrap; }
+.hero { display: grid; grid-template-columns: 1.25fr 1fr; align-items: center; gap: 70px; padding-block: 72px; }
+.eyebrow { margin: 0 0 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+h1, h2, p { margin-top: 0; }
+h1 { margin-bottom: 24px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(44px, 5.3vw, 68px); line-height: 1.07; font-weight: 400; letter-spacing: -2px; }
+.intro { max-width: 440px; color: #52635b; font-size: 17px; line-height: 1.7; margin-bottom: 28px; }
+.primary-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 30px; min-height: 52px; padding: 16px 22px; background: #183d36; color: #fff; border-radius: 5px; font-size: 15px; font-weight: 700; text-decoration: none; }
+.primary-link:hover { background: #285a4d; }
+.helper { max-width: 350px; margin-block: 14px 0; color: #52635b; font-size: 12px; line-height: 1.6; }
+.travel-note { padding: 32px; background: #e7ecdf; border: 1px solid #c7d0bc; border-radius: 6px; transform: rotate(1deg); }
+.note-label { color: #52635b; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+.travel-note h2 { margin-top: 32px; margin-bottom: 12px; font-family: Georgia, serif; font-size: 30px; font-weight: 400; }
+.travel-note > p:not(.note-label):not(.note-footer) { max-width: 280px; color: #52635b; font-size: 14px; line-height: 1.7; }
+.country-pair { display: flex; flex-direction: column; align-items: center; gap: 12px; padding-block: 24px 32px; font-family: Georgia, serif; font-size: 32px; }
+.country-pair span:nth-child(2) { color: #657652; font-family: Arial, sans-serif; font-size: 23px; }
+.note-footer { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 0; padding-top: 18px; border-top: 1px solid #bccbb2; font-size: 11px; }
+.pilot-section { border-top: 1px solid #d7dcd2; padding-block: 34px 40px; scroll-margin-top: 24px; }
+.section-heading .eyebrow { margin-bottom: 10px; color: #52635b; }
+.section-heading h2 { font-family: Georgia, serif; font-size: 28px; font-weight: 400; }
+.scope-grid { display: grid; grid-template-columns: 1.4fr 0.8fr 1fr 1fr; gap: 24px; margin-block: 28px; }
+.scope-grid > div { border-left: 2px solid #b0bf9e; padding-left: 16px; }
+dt { color: #52635b; font-size: 12px; margin-bottom: 10px; }
+dd { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.4; }
+.scope-note { max-width: 680px; margin-bottom: 0; color: #52635b; font-size: 13px; line-height: 1.7; }
+.site-footer { display: flex; justify-content: space-between; gap: 20px; padding-block: 24px; border-top: 1px solid #d7dcd2; color: #52635b; font-size: 12px; }
+
+@media (max-width: 760px) {
+  .site-header, main, .site-footer { width: calc(100% - 40px); }
+  .site-header { padding-block: 20px; }
+  .wordmark { gap: 8px; font-size: 15px; }
+  .brand-mark { width: 34px; height: 34px; font-size: 20px; }
+  .hero { grid-template-columns: 1fr; gap: 36px; padding-block: 44px; }
+  .travel-note { transform: none; padding: 24px; }
+  .scope-grid { grid-template-columns: 1fr 1fr; gap: 24px 16px; }
+  dd { font-size: 16px; }
+}
+
+@media (max-width: 360px) {
+  .site-header, main, .site-footer { width: calc(100% - 32px); }
+  .pilot-label { padding: 6px 8px; font-size: 11px; }
+  .scope-grid { grid-template-columns: 1fr; }
+  .site-footer { flex-direction: column; gap: 8px; }
+}
