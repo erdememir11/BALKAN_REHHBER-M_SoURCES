@@ -4,9 +4,9 @@
 
 **Önce:** Repository'de proje kararları ve Kanban belgeleri vardı; çalıştırılabilir web uygulaması yoktu.
 
-**Bu kart:** Next.js App Router + React + TypeScript tabanını, responsive başlangıç ekranını, tekrarlanabilir kurulum komutlarını ve temel doğrulama katmanlarını ekledi.
+**Bu kart:** Next.js + TypeScript tabanını, responsive başlangıç ekranını ve temel doğrulama komutlarını ekledi.
 
-**Sonra:** Yeni sayfalar ve gerektiğinde aynı repository içindeki Route Handler'lar güvenli bir temel üzerinde geliştirilebilir. Auth, database, AI, gerçek form ve deployment ise bu kartta özellikle yapılmadı.
+**Sonra:** Yeni sayfalar ve Route Handler'lar aynı temel üzerinde geliştirilebilir. Auth, database, AI, gerçek form ve deployment bu kartta yapılmadı.
 
 `Kullanıcı → app/page.tsx → statik başlangıç ekranı`
 
@@ -18,7 +18,7 @@ Bu kartta API veya database akışı yoktur.
 
 **Bu nedir?** App Router, dosya konumundan uygulama rotaları üretir. `app/page.tsx` kök URL'yi (`/`), `app/layout.tsx` bütün sayfaların ortak HTML iskeletini oluşturur. Route Handler ise `app/api/.../route.ts` altında HTTP isteklerini karşılayan sunucu API'sidir.
 
-**Neden önemli?** Kullanıcı arayüzü ile güvenilir sunucu işlemini aynı şey sanmamayı sağlar. Sayfa eklemek için ayrı backend gerekmez; fakat secret, doğrulama veya kayıt işlemi gerektiğinde yalnız tarayıcı koduna güvenilmez.
+**Neden önemli?** UI ile güvenilir sunucu işlemini ayırır. Sayfa için ayrı backend gerekmez; secret, doğrulama veya kayıt işi tarayıcıya bırakılamaz.
 
 **Balkan Rehberim'de nerede?** `HomePage`, `app/page.tsx` içinde pilot kapsamını gösterir. `RootLayout`, `app/layout.tsx` içinde `lang="tr"`, metadata ve ortak `body` yapısını sağlar. KBN-001'de Route Handler yoktur; çünkü veri alan, kaydeden veya dış servis çağıran işlem yoktur.
 
@@ -28,7 +28,7 @@ Bu kartta API veya database akışı yoktur.
 
 **Bu nedir?** `app/page.tsx` ve `app/layout.tsx`, başlarında `"use client"` bulunmadığı için Server Component'tir. Client Component; state, event handler veya browser API gibi tarayıcıda çalışması gereken davranışlarda kullanılır.
 
-**Neden önemli?** Server Component gereksiz JavaScript'i tarayıcıya göndermez ve ileride server-only verilerin istemci paketine sızmasını önleyen doğru sınırı kurar.
+**Neden önemli?** Gereksiz tarayıcı JavaScript'ini azaltır ve server-only veriler için doğru sınırı kurar.
 
 **Balkan Rehberim'de nerede?** Sayfa yalnız JSX üretir. Başlama çağrısı gerçek bir form açmaz; normal HTML bağlantısıyla mevcut bölüme gider:
 
@@ -44,17 +44,17 @@ Bu nedenle state, click handler veya `"use client"` gerekmemiştir. Production b
 
 **Bu nedir?** ADR-001, frontend ve ince backend'in tek Next.js + TypeScript projesinde bulunmasını seçer. Gelecekte Route Handler'lar aynı repository'de olacak; iş kuralları ise framework dosyalarına gömülmeden bağımsız TypeScript modüllerinde tutulacaktır.
 
-**Neden önemli?** Ayrı FastAPI/Express servisi, ikinci deployment ve CORS yükü oluşturmadan gerçek frontend–backend sınırı kurulabilir.
+**Neden önemli?** İkinci servis, deployment ve CORS yükü olmadan frontend–backend sınırı kurulabilir.
 
-**Balkan Rehberim'de nerede?** KBN-001 yalnız proje kabuğunu oluşturdu. `package.json` tek geliştirme, test ve build akışını tanımlar. Ayrı backend, monorepo veya ikinci uygulama eklenmedi.
+**Balkan Rehberim'de nerede?** `package.json` tek geliştirme, test ve build akışını tanımlar; ayrı backend veya monorepo eklenmedi.
 
 **Anlamazsam neyi yanlış yaparım?** “Backend lazım” deyip hemen ikinci servis kurabilir veya tersine “tek repo” diyerek bütün güvenlik ve iş kurallarını `page.tsx` içine yazabilirim.
 
 ### 4. Kurulumun çalışması ile davranışın doğru olması farklı kanıtlar ister
 
-**Bu nedir?** Lockfile ve `npm ci` aynı bağımlılık ağacını kurmaya; lint kod kurallarını, typecheck tipleri, unit/component testi görünür davranışı, production build ise uygulamanın üretim için derlenebildiğini kontrol etmeye yarar.
+**Bu nedir?** Lockfile ve `npm ci` bağımlılıkları; lint kod kurallarını, typecheck tipleri, test görünür davranışı, build ise production derlemesini doğrular.
 
-**Neden önemli?** Tek bir başarılı komut diğer kontrollerin yerini tutmaz. Örneğin build geçebilir ama çağrı yanlış bölüme bağlanmış olabilir.
+**Neden önemli?** Tek başarılı komut yeterli değildir: build geçerken çağrı yanlış bölüme bağlanmış olabilir.
 
 **Balkan Rehberim'de nerede?** `tests/home.test.tsx` iki davranışı kontrol eder: dört pilot sınırının görünmesi ve çağrının `#pilot-kapsami` bölümüne bağlanırken gerçek planlama akışı varmış gibi davranmaması.
 
@@ -70,7 +70,7 @@ Bu nedenle state, click handler veya `"use client"` gerekmemiştir. Production b
 | `npm run build` | Production çıktısı üretilebiliyor; `/` ve `/_not-found` statik oluşturulmuş. |
 | Masaüstü/mobil kontrolleri | 1440, 390 ve 320 piksel genişliklerde okunabilirlik ve yatay taşma kontrol edilmiş. |
 
-Bu sonuçlar `docs/kbn-001-verification.md` içindeki kayıtlı kanıta dayanıyor. Raporda temiz `npm ci`, lint, typecheck, test ve build için PASS yazıyor. Ancak repository'de bağımsız CI çalışma bağlantısı veya ham terminal logu bulunmadığından, bu Learning Report hazırlanırken testlerin yeniden çalıştırıldığını söyleyemem.
+Sonuçlar `docs/kbn-001-verification.md` içindeki PASS kayıtlarına dayanıyor. Bağımsız CI bağlantısı veya ham terminal logu bulunmadığından testlerin bu rapor hazırlanırken yeniden çalıştırıldığını söyleyemem.
 
 ## En çok karıştırabileceğim noktalar
 
