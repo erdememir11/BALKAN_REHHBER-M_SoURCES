@@ -5,8 +5,10 @@
 - Ortam: Windows, Node.js 24.16.0, npm 11.13.0.
 - Kapsam: repository başlangıcı ve responsive açılış ekranı.
 - ADR değişikliği yok. KBN-002 başlatılmadı; veri sözleşmeleri uygulanmadı.
-- Commit/push/PR yapılmadı. Öğrenme kontrolünün kullanıcı cevapları henüz alınmadı;
-  kaynak Kanban belgesindeki pano durumu değiştirilmedi.
+- KBN-001 değişiklikleri `feat/kbn-001-repo-shell` branch'inde commit edilip GitHub'a push edildi.
+- Henüz PR açılmadı ve `main` branch'ine merge edilmedi.
+- Öğrenme kontrolünün kullanıcı cevapları henüz alınmadı; KBN-001 bu nedenle
+  nihai olarak `Tamamlandı` durumuna geçirilmedi.
 
 ## Tekrarlanabilir kontroller
 
@@ -44,7 +46,7 @@ ile açılıp HTTP 200, pilot metni ve çağrı bağlantısı kontrol edildi.
 | Tarayıcı runtime hatası | PASS — 0 |
 | Server/client sınırı | PASS — uygulama kodunda `use client`, state veya event handler yok |
 | `.env.example` | PASS — yalnız boş değerli değişken adları; secret yok |
-| Kaynak belgeler | PASS — dört kaynak README'den bağlı, asılları değiştirilmedi |
+| Kaynak belgeler | PASS — KBN-001, Technical Plan, Decision Log ve Data Contracts README'de güncel `sources/` yollarıyla referanslanıyor; kaynak içerikler değiştirilmedi |
 | Diff/kapsam | PASS — yalnız KBN-001 başlangıcı, testler, kurulum ve kanıt dosyaları |
 
 Kurulum notu: npm, uyumlu peer bağımlılıkları için sabitlenen ESLint 9.39.5'e
@@ -73,5 +75,6 @@ gerçek plan üretimi veya form varmış gibi davranmaz. Pilot bilgisi bu kartta
 tanıtım metnidir; doğrulanmış içerik deposu veya contract değildir. Harici font,
 API, auth, database, AI, CMS, ayrı backend, monorepo ve tasarım sistemi eklenmedi.
 
-KBN-001'i engelleyen mimari çelişki saptanmadı. Kaynaklarda kalan tarihsel belge
-adları README'de mevcut dosyalara eşlendi; kabul edilmiş kaynak metinler değiştirilmedi.
+KBN-001'i engelleyen mimari çelişki saptanmadı. Kabul edilmiş proje kaynakları `sources/` klasörü altında korunmaktadır.
+README içindeki kaynak referansları güncel repository yollarına göre düzenlenmiştir.
+Kaynak belgelerin içerikleri KBN-001 kapsamında değiştirilmemiştir.

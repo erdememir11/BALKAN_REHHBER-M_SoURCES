@@ -72,7 +72,10 @@ KBN-001 kanıtları [docs/kbn-001-verification.md](docs/kbn-001-verification.md)
 - `vitest.config.mts`: test ortamı ve test dosyalarının konumu.
 - `eslint.config.mjs`, `tsconfig.json`: kod ve tip denetimi.
 - `package.json`, `package-lock.json`: komutlar, bağımlılıklar ve `npm ci` için kilitli sürümler.
-- `AGENTS.md`, `CLAUDE.md`: Next.js geliştirme sunucusunun otomatik ürettiği, kurulu sürümün yerel belgelerine yönlendiren araç notları.
+- `AGENTS.md`, `CLAUDE.md`:
+AGENTS.md: Balkan Rehberim'e özel Codex çalışma kuralları + Next.js tarafından yönetilen agent notları.( Next.js geliştirme sunucusunun otomatik ürettiği, kurulu sürümün yerel belgelerine yönlendiren araç notları.)
+CLAUDE.md: AGENTS.md'ye yönlendirme. Next.js geliştirme sunucusunun otomatik ürettiği, kurulu sürümün yerel belgelerine yönlendiren araç notları.
+
 
 Sürüm uyumluluğu: Next.js 16.3.5, React 19.3.0, TypeScript 6.0.3 ve Vitest 5.0.1
 kilitlenmiştir. Mevcut Next.js lint eklentilerinin peer aralığı nedeniyle ESLint 9.39.5
@@ -97,13 +100,13 @@ ADR-012'deki kabul edilmiş hedef korunur.
 
 ## Kabul edilmiş kaynaklar
 
-Kaynaklar repository kökünde asıl dosya adlarıyla korunur; ikinci bir kopya veya yeni
+Kaynaklar repository içinde "sources" dosyasında  asıl dosya adlarıyla korunur; ikinci bir kopya veya yeni
 bir mimari baseline oluşturulmaz.
 
-- [Kanban kartları — KBN-001](Balkan_Rehberim_Kanban_Kartlari_v1_0.md): kapsam, kabul ölçütleri ve öğrenme hedefi.
-- [Technical Plan](technical-plan_bfr_canban.md): özellikle §2–4 mimari, §11 test, §12 deployment, §14 gerekçe ve §15 kapsam dışı işler.
-- [Decision Log](decision-log_bfr_cnbn.md): özellikle ADR-001 tek repo, ADR-011 test stratejisi ve ADR-012 ortam/deployment sınırları.
-- [Data Contracts](data-contracts_bfr_canban.md): kabul edilmiş baseline'ın parçası; bu kartta kod şemalarına dönüştürülmez.
+- [Kanban kartları — KBN-001](sources/Balkan_Rehberim_Kanban_Kartlari_v1_0.md): kapsam, kabul ölçütleri ve öğrenme hedefi.
+- [Technical Plan](sources/technical-plan_bfr_canban.md): özellikle §2–4 mimari, §11 test, §12 deployment, §14 gerekçe ve §15 kapsam dışı işler.
+- [Decision Log](sources/decision-log_bfr_cnbn.md): özellikle ADR-001 tek repo, ADR-011 test stratejisi ve ADR-012 ortam/deployment sınırları.
+- [Data Contracts](sources/data-contracts_bfr_canban.md): kabul edilmiş baseline'ın parçası; bu kartta kod şemalarına dönüştürülmez.
 
 Eski belge gövdelerinde geçen `technical-plan(6).md`, `decision-log(4).md` ve
 `data-contracts(4).md` gibi tarihsel dosya adları yukarıdaki mevcut kaynaklara karşılık
